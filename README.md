@@ -27,6 +27,8 @@
 ---
 
 ## Структура репозитория
+
+```
 farpost-analyst-test/
 ├── notebooks/
 │   ├── 01_ab_test_design.ipynb
@@ -38,3 +40,4 @@ farpost-analyst-test/
 ├── dashboard/        # макеты дашборда, схемы
 ├── assets/           # картинки, референсы
 └── README.md
+```
