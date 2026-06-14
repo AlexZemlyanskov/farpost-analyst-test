@@ -9,3 +9,4 @@ data/processed/*.csv
 *.parquet
 .DS_Store
 .vscode/
+logs/
