@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: stg_autoparts_events
+    description: "События раздела Автозапчасти с привязкой к группе A/B теста через джойн с experiment_assignments"
+    columns:
+      - name: event_id
+        description: "UUID события"
+      - name: event_timestamp
+        description: "Время события (UTC)"
+      - name: event_type
+        description: "Тип события: page_view, listing_click, contact_seller"
+      - name: user_type
+        description: "Тип пользователя: registered, cookie, anonymous"
+      - name: is_registered
+        description: "1 если пользователь зарегистрирован"
+      - name: user_id
+        description: "UUID зарегистрированного пользователя, нули если не зарегистрирован"
+      - name: cookie_id
+        description: "UUID cookie, нули если отсутствует"
+      - name: fingerprint_id
+        description: "UUID device fingerprint, нули если отсутствует"
+      - name: session_id
+        description: "UUID сессии"
+      - name: category
+        description: "Категория объявления"
+      - name: listing_id
+        description: "UUID объявления, нули если событие не связано с объявлением"
+      - name: device_type
+        description: "Тип устройства: desktop, mobile"
+      - name: os
+        description: "Операционная система"
+      - name: region
+        description: "Регион пользователя"
+      - name: experiment_group
+        description: "Группа A/B теста: control, treatment, none. none — пользователь не в тесте"
+      - name: experiment_id
+        description: "UUID эксперимента, нули если пользователь не в тесте"
+
+  - name: stg_realty_events
+    description: "События раздела Недвижимость для дашборда метрик"
+    columns:
+      - name: event_id
+        description: "UUID события"
+      - name: event_timestamp
+        description: "Время события (UTC)"
+      - name: event_type
+        description: "Тип события: page_view, listing_click, contact_seller, favorite_add, search, filter_apply, listing_publish"
+      - name: user_type
+        description: "Тип пользователя: registered, cookie, anonymous"
+      - name: is_registered
+        description: "1 если пользователь зарегистрирован"
+      - name: user_id
+        description: "UUID зарегистрированного пользователя, нули если не зарегистрирован"
+      - name: cookie_id
+        description: "UUID cookie, нули если отсутствует"
+      - name: fingerprint_id
+        description: "UUID device fingerprint, нули если отсутствует"
+      - name: session_id
+        description: "UUID сессии"
+      - name: category
+        description: "Категория объявления"
+      - name: listing_id
+        description: "UUID объявления, нули если событие не связано с объявлением"
+      - name: device_type
+        description: "Тип устройства: desktop, mobile"
+      - name: os
+        description: "Операционная система"
+      - name: region
+        description: "Регион пользователя"

@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: farpost
+    database: farpost
+    schema: farpost
+    tables:
+      - name: raw_events
+        description: "Сырые события веб-аналитики Фарпост"
+      - name: experiment_assignments
+        description: "Назначения пользователей в группы A/B теста, имитирует GrowthBook"
