@@ -1,4 +1,5 @@
 {{ config(materialized='table') }}
+
 SELECT
     event_id,
     event_timestamp,

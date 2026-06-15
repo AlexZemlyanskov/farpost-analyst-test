@@ -1,4 +1,5 @@
 {{ config(materialized='table') }}
+
 WITH events AS (
     SELECT *
     FROM {{ source('farpost', 'raw_events') }}
