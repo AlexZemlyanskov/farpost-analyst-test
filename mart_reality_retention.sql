@@ -22,7 +22,6 @@ WITH user_activity AS (
     WHERE user_type IN ('registered', 'cookie')
     GROUP BY analysis_id, activity_date
 ),
-
 cohorts AS (
     -- Когорта пользователя -- дата его первого визита за весь период наблюдения
     SELECT
@@ -31,7 +30,6 @@ cohorts AS (
     FROM user_activity
     GROUP BY analysis_id
 ),
-
 activity_with_offset AS (
     SELECT
         c.cohort_date,
@@ -40,13 +38,11 @@ activity_with_offset AS (
     FROM user_activity a
     JOIN cohorts c ON a.analysis_id = c.analysis_id
 ),
-
 cohort_sizes AS (
     SELECT cohort_date, count() AS cohort_size
     FROM cohorts
     GROUP BY cohort_date
 )
-
 SELECT
     awo.cohort_date,
     awo.days_since_cohort,
