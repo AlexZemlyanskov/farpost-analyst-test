@@ -12,30 +12,28 @@ assignments AS (
 )
 
 SELECT
-    e.event_id,
-    e.event_timestamp,
-    e.event_type,
-    e.user_type,
-    e.is_registered,
-    e.user_id,
-    e.cookie_id,
-    e.fingerprint_id,
-    e.session_id,
-    e.category,
-    e.listing_id,
-    e.device_type,
-    e.os,
-    e.region,
-    -- Джойним группу из assignments: сначала по user_id для зарегов,
-    -- потом по cookie_id для незарегов
-    COALESCE(
-        a_reg.experiment_group,
-        a_cookie.experiment_group,
+    e.event_id        AS event_id,
+    e.event_timestamp AS event_timestamp,
+    e.event_type       AS event_type,
+    e.user_type        AS user_type,
+    e.is_registered    AS is_registered,
+    e.user_id          AS user_id,
+    e.cookie_id        AS cookie_id,
+    e.fingerprint_id   AS fingerprint_id,
+    e.session_id       AS session_id,
+    e.category         AS category,
+    e.listing_id       AS listing_id,
+    e.device_type      AS device_type,
+    e.os               AS os,
+    e.region           AS region,
+    multiIf(
+        a_reg.experiment_group != '', a_reg.experiment_group,
+        a_cookie.experiment_group != '', a_cookie.experiment_group,
         'none'
     ) AS experiment_group,
-    COALESCE(
-        a_reg.experiment_id,
-        a_cookie.experiment_id,
+    multiIf(
+        a_reg.experiment_group != '', a_reg.experiment_id,
+        a_cookie.experiment_group != '', a_cookie.experiment_id,
         '00000000-0000-0000-0000-000000000000'
     ) AS experiment_id
 FROM events e
