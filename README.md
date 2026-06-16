@@ -37,12 +37,12 @@
 
 
 ## Архитектура данных
-- `generate\_data.py` - генерация и загрузка
-- ClickHouse: `raw\_events` + `experiment\_assignments` - сырые данные
-- dbt staging: `stg\_autoparts\_events` / `stg\_realty\_events` - чистка + джойн с группой эксперимента
-- SQL-витрины: `mart\_ab\_test`, `reality\_dashboard\_mart`, `mart\_reality\_retention`
+- `generate_data.py` - генерация и загрузка
+- ClickHouse: `raw_events` + `experiment_assignments` - сырые данные
+- dbt staging: `stg_autoparts_events` / `stg_realty_events` - чистка + джойн с группой эксперимента
+- SQL-витрины: `mart_ab_test`, `reality_dashboard_mart`, `mart_reality_retention`
 - Ноутбук (A/B тест) / Дашборд (Недвижимость) - финальный анализ и визуализация
-- `raw\_events` не содержит информацию об эксперименте - назначение группы хранится отдельно в `experiment\_assignments`  и присоединяется  на staging-слое в dbt. Таким образом raw имитирует реальные логи веб-аналитики, бизнес-логика описывается отдельнно.
+- `raw_events` не содержит информацию об эксперименте - назначение группы хранится отдельно в `experiment_assignments`  и присоединяется  на staging-слое в dbt. Таким образом raw имитирует реальные логи веб-аналитики, бизнес-логика описывается отдельнно.
 
 
 
